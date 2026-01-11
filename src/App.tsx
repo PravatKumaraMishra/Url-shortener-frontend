@@ -4,11 +4,13 @@ import LandingPage from "./components/LandingPage";
 import AboutPage from "./components/AboutPage";
 import Footer from "./components/Footer";
 import RegisterPage from "./components/RegisterPage";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <Toaster position="bottom-center" />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />

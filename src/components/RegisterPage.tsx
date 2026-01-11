@@ -1,17 +1,35 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Field from "./Field";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../api/api";
+import toast from "react-hot-toast";
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
+
   const registerHandler = (data: any) => {
-    console.log(data);
+    setLoader(true);
+    api
+      .post("/auth/register", data)
+      .then((response) => {
+        console.log(response);
+        reset();
+        navigate("/login");
+        toast.success("Registration Successful");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      })
+      .finally(() => setLoader(false));
   };
   return (
     <div className="min-h-[calc(100vh-64px)] flex items-center justify-center">
@@ -26,11 +44,12 @@ export default function RegisterPage() {
         <div className="flex flex-col gap-3">
           <Field
             label="Name"
-            id="username"
+            id="name"
             type="text"
             errors={errors}
             register={register}
             required
+            autocomplete="username"
             message="Username is required"
             placeholder="Enter your username"
           />
@@ -41,6 +60,7 @@ export default function RegisterPage() {
             errors={errors}
             register={register}
             required
+            autocomplete="email"
             message="Email is required"
             placeholder="Enter your email"
           />
@@ -48,9 +68,11 @@ export default function RegisterPage() {
             label="Password"
             id="password"
             type="password"
+            autocomplete="new-password"
             errors={errors}
             register={register}
             required
+            min={6}
             message="Password is required"
             placeholder="Enter your password"
           />

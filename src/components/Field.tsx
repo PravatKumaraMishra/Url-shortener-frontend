@@ -10,6 +10,7 @@ interface Props {
   min?: number;
   value?: string;
   placeholder?: string;
+  autocomplete?: string;
 }
 export default function Field({
   label,
@@ -21,7 +22,7 @@ export default function Field({
   message,
   className,
   min,
-  value,
+  autocomplete,
   placeholder,
 }: Props) {
   return (
@@ -37,6 +38,7 @@ export default function Field({
         type={type}
         id={id}
         placeholder={placeholder}
+        autoComplete={autocomplete}
         className={`${
           className ? className : ""
         } px-2 py-2 border outline-none bg-transparent text-slate-700 rounded-md ${
