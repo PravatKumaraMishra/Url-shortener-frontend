@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import Card from "./Card";
 
-
-
 const LandingPage = () => {
-
-  const dashBoardNavigateHandler = () => { };
+  const dashBoardNavigateHandler = () => {};
   return (
     <div className="min-h-[calc(100vh-64px)]  lg:px-14 sm:px-8 px-4">
       <div className="lg:flex-row flex-col    lg:py-5   pt-16   lg:gap-10 gap-8 flex justify-between items-center">
@@ -66,8 +63,8 @@ const LandingPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="sm:w-[480px] w-[400px] object-cover rounded-md"
-            src="/images/img2.png"
-            alt=""
+            src="/images/image.png"
+            alt="Logo"
           />
         </div>
       </div>
