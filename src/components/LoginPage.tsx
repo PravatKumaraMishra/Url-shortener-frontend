@@ -4,10 +4,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/api";
 import toast from "react-hot-toast";
+import useTokenStore from "../api/Store";
 
 export default function LoginPage() {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
+  const { token, setToken } = useTokenStore();
   const {
     register,
     handleSubmit,
@@ -27,8 +29,7 @@ export default function LoginPage() {
     api
       .post("/auth/login", data)
       .then((res) => {
-        const token = res.data.token;
-        localStorage.setItem("JWT_TOKEN", JSON.stringify(token));
+        setToken(res.data.token);
         navigate("/");
         reset();
         toast.success("Login successful");
@@ -39,6 +40,7 @@ export default function LoginPage() {
       })
       .finally(() => {
         setLoader(false);
+        console.log(token);
       });
   };
   return (
