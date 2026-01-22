@@ -30,7 +30,7 @@ export default function LoginPage() {
       .post("/auth/login", data)
       .then((res) => {
         setToken(res.data.token);
-        navigate("/");
+        navigate("/dashboard");
         reset();
         toast.success("Login successful");
       })

@@ -16,13 +16,15 @@ const Navbar = () => {
           </h1>
         </Link>
         <ul
-          className={`flex sm:gap-10 gap-4 sm:items-center sm:mt-1 sm:pt-0 pt-3 text-slate-800 sm:static absolute left-0 top-[62px] sm:shadow-none shadow-md ${navbarOpen ? "h-fit sm:pb-0 pb-5" : "h-0 overflow-hidden"
-            }  transition-all duration-100 sm:h-fit sm:bg-none  bg-custom-gradient sm:w-fit w-full sm:flex-row flex-col px-4 sm:px-0`}
+          className={`flex sm:gap-10 gap-4 sm:items-center sm:mt-1 sm:pt-0 pt-3 text-slate-800 sm:static absolute left-0 top-[62px] sm:shadow-none shadow-md ${
+            navbarOpen ? "h-fit sm:pb-0 pb-5" : "h-0 overflow-hidden"
+          }  transition-all duration-100 sm:h-fit sm:bg-none  bg-custom-gradient sm:w-fit w-full sm:flex-row flex-col px-4 sm:px-0`}
         >
           <li className="hover:text-btnColor font-[500]  transition-all duration-150">
             <Link
-              className={`${path === "/" ? "text-white font-semibold" : "text-gray-200"
-                }`}
+              className={`${
+                path === "/" ? "text-white font-semibold" : "text-gray-200"
+              }`}
               to="/"
             >
               Home
@@ -30,8 +32,9 @@ const Navbar = () => {
           </li>
           <li className="hover:text-btnColor font-[500]  transition-all duration-150">
             <Link
-              className={`${path === "/about" ? "text-white font-semibold" : "text-gray-200"
-                }`}
+              className={`${
+                path === "/about" ? "text-white font-semibold" : "text-gray-200"
+              }`}
               to="/about"
             >
               About
@@ -40,6 +43,11 @@ const Navbar = () => {
           <Link to="/register">
             <li className=" sm:ml-0 -ml-1 bg-rose-700 text-white  cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md  hover:text-slate-300   transition-all duration-150">
               SignUp
+            </li>
+          </Link>
+          <Link to="/login">
+            <li className=" sm:ml-0 -ml-1 bg-rose-600 text-white  cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md  hover:text-slate-300   transition-all duration-150">
+              Login
             </li>
           </Link>
         </ul>
