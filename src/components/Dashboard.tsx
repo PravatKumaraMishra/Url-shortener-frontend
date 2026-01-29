@@ -1,9 +1,12 @@
+import { useState } from "react";
 import useTokenStore from "../api/Store";
 import { useFetchTotalClicks } from "../hooks/useFetchTotalClicks";
 import Graph from "./Graph";
+import CreateUrlModal from "./CreateUrlModal";
 
 export default function Dashboard() {
   const { token } = useTokenStore();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // console.log(useFetchTotalClicks(token, onError));
 
@@ -32,9 +35,17 @@ export default function Dashboard() {
             {totalClicks && <Graph graphData={totalClicks} />}
           </div>
           <div className="py-5 sm:text-end text-center">
-            <button className="bg-custom-gradient px-4 py-2 rounded-md text-white">
+            <button
+              className="bg-custom-gradient px-4 py-2 rounded-md text-white"
+              onClick={() => setIsModalOpen(true)}
+            >
               Create a New Short URL
             </button>
+
+            <CreateUrlModal
+              setOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
           </div>
         </div>
       )}
