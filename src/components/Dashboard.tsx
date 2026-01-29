@@ -1,5 +1,5 @@
 import useTokenStore from "../api/Store";
-import { useFetchTotalClicks } from "../hooks/useQuery";
+import { useFetchTotalClicks } from "../hooks/useFetchTotalClicks";
 import Graph from "./Graph";
 
 export default function Dashboard() {

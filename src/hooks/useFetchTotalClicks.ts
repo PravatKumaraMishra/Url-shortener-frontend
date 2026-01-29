@@ -5,7 +5,7 @@ const fetchAnalyticsData = (token: string | null) => {
   return api
     .get(
       //Todo: Make the endpoint accecpt start and end date as perameter
-      "/analytics/urls?startDate=2024-01-01T00:00:00&endDate=2026-01-26T00:00:00",
+      "/analytics/urls?startDate=2024-01-01T00:00:00&endDate=2026-01-29T00:00:00",
       {
         headers: {
           "Content-Type": "application/json",
