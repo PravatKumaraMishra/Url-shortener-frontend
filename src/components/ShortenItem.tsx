@@ -30,7 +30,7 @@ const ShortenItem = ({
   const [selectedUrl, setSelectedUrl] = useState("");
   const [analyticsData, setAnalyticsData] = useState([]);
 
-  const subDomain = import.meta.env.VITE_BACKEND_URL.replace(
+  const subDomain = import.meta.env.VITE_SUBDOMAIN_URL.replace(
     /^https?:\/\//,
     "",
   );
@@ -82,7 +82,7 @@ const ShortenItem = ({
         <div className="flex-1 sm:space-y-1 max-w-full overflow-x-auto overflow-y-hidden ">
           <div className="text-slate-900 pb-1 sm:pb-0   flex items-center gap-2 ">
             <a
-              href={`${import.meta.env.VITE_BACKEND_URL}/${shortUrl}`}
+              href={`${import.meta.env.VITE_SUBDOMAIN_URL}/${shortUrl}`}
               target="_blank"
               className=" text-[17px]  font-montserrat font-[600] text-linkColor "
             >
@@ -122,7 +122,7 @@ const ShortenItem = ({
         <div className="flex  flex-1  sm:justify-end items-center gap-4">
           <CopyToClipboard
             onCopy={() => setIsCopied(true)}
-            text={`${import.meta.env.VITE_BACKEND_URL}/${shortUrl}`}
+            text={`${import.meta.env.VITE_SUBDOMAIN_URL}/${shortUrl}`}
           >
             <div className="flex cursor-pointer gap-1 items-center bg-btnColor py-2  font-semibold shadow-md shadow-slate-500 px-6 rounded-md text-white ">
               <button className="">{isCopied ? "Copied" : "Copy"}</button>
