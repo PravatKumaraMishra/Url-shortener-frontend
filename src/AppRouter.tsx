@@ -9,6 +9,7 @@ import RegisterPage from "./components/RegisterPage";
 import Dashboard from "./components/Dashboard";
 import ShortenUrlPage from "./components/ShortenUrlPage";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "./components/ErrorPage";
 
 const AppRouter = () => {
   return (
@@ -40,6 +41,13 @@ const AppRouter = () => {
             <PrivateRoute publicPage={false}>
               <Dashboard />
             </PrivateRoute>
+          }
+        />
+        <Route path="/error" element={<ErrorPage />} />
+        <Route
+          path="*"
+          element={
+            <ErrorPage message="We can't seem to find the page you're looking for" />
           }
         />
       </Routes>
