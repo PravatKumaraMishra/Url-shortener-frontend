@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useTokenStore from "../api/Store";
+import useTokenStore from "../hooks/Store";
 import { useFetchTotalClicks } from "../hooks/useFetchTotalClicks";
 import Graph from "./Graph";
 import CreateUrlModal from "./CreateUrlModal";

@@ -7,7 +7,7 @@ import { LiaCheckSolid } from "react-icons/lia";
 import { MdAnalytics, MdOutlineAdsClick } from "react-icons/md";
 import api from "../api/api";
 import { useNavigate } from "react-router-dom";
-import useTokenStore from "../api/Store";
+import useTokenStore from "../hooks/Store";
 import Graph from "./Graph";
 import { Hourglass } from "react-loader-spinner";
 export interface AllUrlResponse {
@@ -49,8 +49,6 @@ const ShortenItem = ({
         `/analytics/${selectedUrl}?startDate=2024-12-01T00:00:00&endDate=2026-01-31T23:59:59`,
         {
           headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
             Authorization: "Bearer " + token,
           },
         },

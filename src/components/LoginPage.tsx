@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/api";
 import toast from "react-hot-toast";
-import useTokenStore from "../api/Store";
+import useTokenStore from "../hooks/Store";
 
 export default function LoginPage() {
   const [loader, setLoader] = useState(false);

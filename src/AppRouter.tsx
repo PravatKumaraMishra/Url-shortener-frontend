@@ -8,11 +8,9 @@ import Navbar from "./components/Navbar";
 import RegisterPage from "./components/RegisterPage";
 import Dashboard from "./components/Dashboard";
 import ShortenUrlPage from "./components/ShortenUrlPage";
-import useTokenStore from "./api/Store";
 import PrivateRoute from "./PrivateRoute";
 
 const AppRouter = () => {
-  const { token } = useTokenStore();
   return (
     <>
       <Navbar />

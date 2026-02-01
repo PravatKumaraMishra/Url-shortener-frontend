@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import useTokenStore from "./api/Store";
+import useTokenStore from "./hooks/Store";
 import { Navigate } from "react-router-dom";
 
 interface Props {

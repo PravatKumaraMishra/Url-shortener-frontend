@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import api from "../api/api";
 import toast from "react-hot-toast";
-import useTokenStore from "../api/Store";
+import useTokenStore from "./Store";
 
 export interface CreateUrlRequest {
   longUrl: string;
@@ -22,8 +22,6 @@ const createUrl = (
   return api
     .post("/shorten", payload, {
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
         Authorization: "Bearer " + token,
       },
     })

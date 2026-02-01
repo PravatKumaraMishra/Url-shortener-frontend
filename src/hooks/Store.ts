@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 
 interface TokenStore {
   token: string | null;
-  setToken: (token: string) => void;
+  setToken: (token: string | null) => void;
   clearToken: () => void;
   isTokenValid: (token: string) => boolean;
 }
@@ -25,7 +25,7 @@ const useTokenStore = create<TokenStore>((set) => ({
   })(),
 
   setToken: (token) => {
-    if (!isTokenExpired(token)) {
+    if (token && !isTokenExpired(token)) {
       localStorage.setItem("JWT_TOKEN", JSON.stringify(token));
       set({ token });
     } else {
