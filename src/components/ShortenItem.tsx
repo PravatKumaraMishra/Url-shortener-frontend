@@ -43,16 +43,19 @@ const ShortenItem = ({
   };
 
   const fetchMyShortUrl = async () => {
+    const startDate = new Date("2024-12-01T00:00:00");
+    const endDate = new Date();
     setLoader(true);
     try {
-      const { data } = await api.get(
-        `/analytics/${selectedUrl}?startDate=2024-12-01T00:00:00&endDate=2026-01-31T23:59:59`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
+      const { data } = await api.get(`/analytics/${selectedUrl}`, {
+        headers: {
+          Authorization: "Bearer " + token,
         },
-      );
+        params: {
+          startDate: startDate,
+          endDate: endDate,
+        },
+      });
       setAnalyticsData(data);
       setSelectedUrl("");
       console.log(data);

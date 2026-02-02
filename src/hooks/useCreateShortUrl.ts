@@ -36,13 +36,16 @@ export const useCreateShortUrl = (onClose: () => void) => {
     mutationFn: (payload: CreateUrlRequest) => createUrl(token, payload),
 
     onSuccess: (data) => {
-      const fullShortUrl = `${import.meta.env.VITE_BACKEND_URL}/${data.shortUrl}`;
+      const fullShortUrl = `${import.meta.env.VITE_SUBDOMAIN_URL}/${data.shortUrl}`;
       navigator.clipboard
         .writeText(fullShortUrl)
         .then(() => toast.success("Short URL copied to clipboard!"))
         .catch(() => toast.error("Failed to copy"));
 
-      queryClient.invalidateQueries({ queryKey: ["my-urls"] });
+      // Invalidate URL list to show new URL instantly
+      queryClient.invalidateQueries({ queryKey: ["urls"] });
+      // Invalidate analytics to update total clicks
+      queryClient.invalidateQueries({ queryKey: ["url-totalclick"] });
       onClose();
     },
     onError: (error) => {

@@ -32,6 +32,8 @@ export const useFetchMyShortUrls = (token: string | null) => {
           )
         : [],
     staleTime: 5 * 60 * 1000, // 5 minutes
+    refetchOnWindowFocus: true, // Refresh when user returns to tab
+    refetchOnMount: true, // Always fetch fresh data on mount
     enabled: !!token,
   });
 };

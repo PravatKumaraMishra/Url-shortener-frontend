@@ -2,18 +2,18 @@ import api from "../api/api";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchAnalyticsData = (token: string | null) => {
+  const startDate = new Date("2024-01-01T00:00:00");
+  const endDate = new Date().toISOString();
   return api
-    .get(
-      //Todo: Make the endpoint accecpt start and end date as perameter
-      "/analytics/urls?startDate=2024-01-01T00:00:00&endDate=2026-01-29T00:00:00",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: "Bearer " + token,
-        },
+    .get("/analytics/urls", {
+      headers: {
+        Authorization: "Bearer " + token,
       },
-    )
+      params: {
+        startDate: startDate,
+        endDate: endDate,
+      },
+    })
     .then((response) =>
       Object.keys(response.data).map((key) => ({
         clickDate: key,
@@ -24,8 +24,11 @@ const fetchAnalyticsData = (token: string | null) => {
 
 export const useFetchTotalClicks = ({ token }: { token: string | null }) => {
   return useQuery({
-    queryKey: ["url-totalclick"],
-    queryFn: () => fetchAnalyticsData(token), // ✅ Wrap in arrow function
-    staleTime: 5000,
+    queryKey: ["url-totalclick", token],
+    queryFn: () => fetchAnalyticsData(token),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    refetchInterval: 30 * 1000, // Refetch every 30 seconds for real-time updates
+    refetchOnWindowFocus: true, // Refresh when user returns to tab
+    enabled: !!token,
   });
 };
